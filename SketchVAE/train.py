@@ -40,9 +40,9 @@ def loss_function(recon, target, p_dis, r_dis, beta):
 s_dir = "" # folder_address
 batch_size = 64
 n_epochs = 100
-data_path = ["data/irish_train_chord_rhythm.npy",
-             "data/irish_validate_chord_rhythm.npy",
-             "data/irish_test_chord_rhythm.npy"]
+# data_path = ["data/irish_train_chord_rhythm.npy",
+#              "data/irish_validate_chord_rhythm.npy",
+#              "data/irish_test_chord_rhythm.npy"]
 save_path = "model_backup" # save_model_address
 lr = 1e-4
 decay = 0.9999
@@ -80,7 +80,7 @@ def processed_data_tensor(data):
     print("processed finish!")
     return TensorDataset(px, rx, len_x, nrx, gd)
 
-def train_sketch_vae():
+def train_sketch_vae(datapath):
     train_set = np.load(os.path.join(s_dir, data_path[0]), allow_pickle=True)
     validate_set = np.load(os.path.join(s_dir, data_path[1]), allow_pickle=True)
     train_set = DataLoader(

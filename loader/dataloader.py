@@ -39,6 +39,20 @@ class MIDI_Loader:
                     if total % 1000 == 0:
                         print("processed:%d" % (total + 1))
                     total = total + 1
+        if self.datasetName == "Impressionistic":
+            for midi_file in path:
+                if not midi_file.endswith(".mid"):
+                    continue
+                temp = pyd.PrettyMIDI(directory + midi_file)
+                # useless midi file
+                if len(temp.instruments) == 0 or len(temp.instruments[0].notes) == 0:
+                    continue
+                tsc = temp.time_signature_changes
+                if len(tsc) == 1 and tsc[0].numerator == 4 and tsc[0].denominator == 4:
+                    self.midi_files.append({"name": (midi_file.split("."))[0], "raw": temp})
+                    if total % 1000 == 0:
+                        print("processed:%d" % (total + 1))
+                    total = total + 1
         print("loading %s success! %d files in total" %(directory, len(self.midi_files)))
         return None
     def getChordSeq(self, recogLevel = "Mm"):
@@ -330,7 +344,7 @@ class MIDI_Render:
             time_shift = 0.0
             local_duration = 0
             prev = rest_pitch
-            for note in data["notes"]:
+            for note in data:
                 note = int(note)
                 if note < 0 or note > 129:
                     continue

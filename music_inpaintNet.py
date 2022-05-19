@@ -114,6 +114,8 @@ def train_music_inpaintNet():
     else:
         print('Using: CPU')
 
+    print(model.parameters())
+    return
     device = torch.device(torch.cuda.current_device())
     save_period = 2
     losses = []

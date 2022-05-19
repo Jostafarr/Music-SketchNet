@@ -113,6 +113,7 @@ def train_measure_vae():
         print('Using: CPU')
 
     print("MeasureVAE parameters: " + model.parameters())
+    return
     model.train()
     step = 0
     for epoch in range(n_epochs):

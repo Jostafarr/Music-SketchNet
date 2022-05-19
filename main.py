@@ -26,31 +26,30 @@ s_dir = "" # folder address
 dataset_path = "data/IrishFolkSong/session/" # dataset path
 t_ec2vae = False
 t_measure_vae = False
-
+data_path = ["data/impressionistic_train.npy",
+              "data/impressionistic_validate.npy",
+              "data/impressionistic_test.npy"]
+chord_rhythm_data_path = ["data/impressionistic_train_chord_rhythm.npy",
+              "data/impressionistic_validate_chord_rhythm.npy",
+              "data/impressionistic_test_chord_rhythm.npy"]
+whole_data_path = [
+    "data/impressionistic-measure-vae-train-whole.npy",
+    "data/impressionistic-measure-vae-validate-whole.npy",
+    "data/impressionistic-measure-vae-test-whole.npy"
+]
 def main():
-    measure_vae = MeasureVAE()
-    print(measure_vae.parameters())
-
-    sketchnet = SketchNet()
-    print(sketchnet.parameters())
-
-    sketch_vae = SketchVae()
-    print(sketch_vae.parameters())
-    
-    inpaint_rnn = InpaintingNet()
-    print(inpaint_rnn.parameters())
 
 
-    # process_irish(s_dir, dataset_path)
-    # if t_ec2vae: train_ec2vae()
-    # if t_measure_vae: train_measure_vae()
+     process_impressionistic(s_dir, dataset_path)
+     if t_ec2vae: train_ec2vae(data_path)
+     if t_measure_vae: train_measure_vae(data_path)
 
-    # process_data()
+     process_data(datapath)
 
-    # train_sketch_vae()
-    # train_music_inpaintNet()
-    # train_sketchvae_inpaintRNN()
-    # train_sketchnet()
+    train_sketch_vae(chord_rhythm_data_path)
+    train_music_inpaintNet()
+    train_sketchvae_inpaintRNN()
+    train_sketchnet()
 
     # evaluate_musicInpaintNet()
     # evaluata_SketchVAE_InpaintRNN()

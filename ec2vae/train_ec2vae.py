@@ -41,9 +41,9 @@ batch_size = 128
 n_epochs = 100
 save_path = "model_backup"  # model_save_path
 save_period = 2  # save every 2 epoches
-data_path = ["data/irish_train.npy",
-             "data/irish_validate.npy",
-             "data/irish_test.npy"]
+# data_path = ["data/irish_train.npy",
+#              "data/irish_validate.npy",
+#              "data/irish_test.npy"]
 lr = 1e-4
 decay = 0.9999
 if_parallel = False
@@ -55,7 +55,7 @@ input_dims = 130
 rhythm_dims = 3
 seq_len = 6 * 4
 
-def train_ec2vae():
+def train_ec2vae(datapath):
 
     train_x = np.load(data_path[0], allow_pickle=True)
     validate_x = np.load(data_path[1], allow_pickle=True)

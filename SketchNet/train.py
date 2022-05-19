@@ -200,6 +200,7 @@ def train_sketchnet():
         vae_model, True
     )
     print("Sketchnet parameters: " + model.parameters())
+    return
     # stage-1 traning result
     dic = torch.load(os.path.join(save_path, "sketchnet-stage-1-param.pt"))
     for name in list(dic.keys()):

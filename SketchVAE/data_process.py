@@ -61,20 +61,15 @@ def process_rythm_and_pitch(x):
     return final_data
 
 
-def process_data():
+def process_data(datapath):
     if os.path.exists("data/irish_train_chord_rhythm.npy") and os.path.exists("data/irish_validate_chord_rhythm.npy") and os.path.exists("data/irish_test_chord_rhythm.npy"):
         print("data already processed")
         return 
-    data_path = [
-        "data/irish_train.npy",
-        "data/irish_validate.npy",
-        "data/irish_test.npy"
-    ]
 
     train_x = np.load(data_path[0], allow_pickle=True)
     validate_x = np.load(data_path[1], allow_pickle=True)
     test_x = np.load(data_path[2], allow_pickle=True)
 
-    np.save("data/irish_train_chord_rhythm.npy", process_rythm_and_pitch(train_x))
-    np.save("data/irish_validate_chord_rhythm.npy", process_rythm_and_pitch(validate_x))
-    np.save("data/irish_test_chord_rhythm.npy", process_rythm_and_pitch(test_x))
+    np.save("data/impressionistic_train_chord_rhythm.npy", process_rythm_and_pitch(train_x))
+    np.save("data/impressionistic_validate_chord_rhythm.npy", process_rythm_and_pitch(validate_x))
+    np.save("data/impressionistic_test_chord_rhythm.npy", process_rythm_and_pitch(test_x))
