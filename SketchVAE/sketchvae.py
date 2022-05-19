@@ -86,7 +86,7 @@ class SketchVAE(nn.Module):
         s_len_x, s_len_idx = torch.sort(len_x, descending = True)
         _, re_len_idx = torch.sort(s_len_idx)
         s_px = px.index_select(0, s_len_idx)
-        padding_px = torch.nn.utils.rnn.pack_padded_sequence(s_px, s_len_x, batch_first = True)
+        padding_px = torch.nn.utils.rnn.pack_padded_sequence(s_px, s_len_x.cpu(), batch_first = True)
         padding_px = self.p_encoder_gru(padding_px)[-1]
         padding_px = padding_px.transpose(0,1).contiguous()
         padding_px = padding_px.view(padding_px.size(0), -1)
