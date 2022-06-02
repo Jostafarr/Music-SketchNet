@@ -40,11 +40,11 @@ whole_data_path = [
 def main():
 
 
-     process_impressionistic(s_dir, dataset_path)
-     if t_ec2vae: train_ec2vae(data_path)
-     if t_measure_vae: train_measure_vae(data_path)
+    process_impressionistic(s_dir, dataset_path)
+    if t_ec2vae: train_ec2vae(data_path)
+    if t_measure_vae: train_measure_vae(data_path)
 
-     process_data(datapath)
+    process_data(datapath)
 
     train_sketch_vae(chord_rhythm_data_path)
     train_music_inpaintNet()
